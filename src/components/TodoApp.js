@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
+import TodoList from './TodoList';
 
 // -- Components
 // - Todo App
@@ -13,6 +14,14 @@ import Grid from '@material-ui/core/Grid';
 //      - Todo Item
 
 const TodoApp = () => {
+  const initialTodos = [
+    { id: 1, task: 'Wash Jeep', completed: false },
+    { id: 2, task: 'Buy Grouserys', completed: true },
+    { id: 3, task: 'Wash Self', completed: false }
+  ];
+
+  const [task, setTask] = useState(initialTodos);
+
   return (
     <Paper
       style={{
@@ -28,6 +37,7 @@ const TodoApp = () => {
           <Typography color="inherit">Todo with Hookd</Typography>
         </Toolbar>
       </AppBar>
+      <TodoList task={task} />
     </Paper>
   );
 };
