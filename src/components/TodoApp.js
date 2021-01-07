@@ -26,23 +26,32 @@ const TodoApp = () => {
     setTasks([...tasks, passTodo]);
   };
 
+  const handleTodoDelete = passedId => {
+    // console.log(passedId);
+    setTasks(tasks.filter(t => t.id !== passedId));
+  };
+
   return (
     <Paper
       style={{
         padding: 0,
         margin: 0,
         height: '100vh',
-        backgroundColor: '#fafafa'
+        backgroundColor: 'lightSlateGrey'
       }}
       elevation={0}
     >
       <AppBar color="primary" position="static" styles={{ height: '64px' }}>
         <Toolbar>
-          <Typography color="inherit">Todo with Hookd</Typography>
+          <Typography color="inherit">Todo with Hooks</Typography>
         </Toolbar>
       </AppBar>
-      <TodoForm handleTodoPass={handleTodoPass} />
-      <TodoList tasks={tasks} />
+      <Grid container justify="center" style={{ marginTop: '2rem' }}>
+        <Grid item xs={11} md={8} lg={4}>
+          <TodoForm handleTodoPass={handleTodoPass} />
+          <TodoList tasks={tasks} handleTodoDelete={handleTodoDelete} />
+        </Grid>
+      </Grid>
     </Paper>
   );
 };

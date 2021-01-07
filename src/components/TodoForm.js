@@ -13,9 +13,15 @@ const TodoForm = ({ handleTodoPass }) => {
     resetText();
   };
   return (
-    <Paper>
+    <Paper style={{ padding: '0 1rem', margin: '1rem' }}>
       <form onSubmit={handleSubmit}>
-        <TextField value={text} onChange={setText} />
+        <TextField
+          value={text}
+          onChange={setText}
+          margin="normal"
+          label="AddTodo"
+          fullWidth
+        />
         {/* <button type="submit">Add Todo</button> */}
       </form>
     </Paper>
