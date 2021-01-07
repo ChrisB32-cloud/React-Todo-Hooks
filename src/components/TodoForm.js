@@ -16,7 +16,7 @@ const TodoForm = ({ handleTodoPass }) => {
     <Paper>
       <form onSubmit={handleSubmit}>
         <TextField value={text} onChange={setText} />
-        <button type="submit">Add Todo</button>
+        {/* <button type="submit">Add Todo</button> */}
       </form>
     </Paper>
   );
