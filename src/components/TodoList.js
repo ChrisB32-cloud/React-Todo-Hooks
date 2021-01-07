@@ -6,20 +6,20 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TodoTask from './TodoTask';
 
-const TodoList = ({ tasks, handleTodoDelete }) => {
+const TodoList = ({ tasks, handleTodoDelete, handleCompleted }) => {
   return (
     <Paper>
       <List>
         {tasks.map(m => (
           <>
-            <ListItem key={m.id}>
-              {/* <ListItemText>{m.task}</ListItemText> */}
-              <TodoTask
-                tasks={m.task}
-                taskId={m.id}
-                handleTodoDelete={handleTodoDelete}
-              />
-            </ListItem>
+            <TodoTask
+              key={m.id}
+              tasks={m.task}
+              taskId={m.id}
+              taskChecked={m.completed}
+              handleTodoDelete={handleTodoDelete}
+              handleCompleted={handleCompleted}
+            />
             <Divider />
           </>
         ))}
