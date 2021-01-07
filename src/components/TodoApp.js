@@ -20,7 +20,11 @@ const TodoApp = () => {
     { id: 3, task: 'Wash Self', completed: false }
   ];
 
-  const [task, setTask] = useState(initialTodos);
+  const [tasks, setTasks] = useState(initialTodos);
+
+  const handleTodoPass = passTodo => {
+    setTasks([...tasks, passTodo]);
+  };
 
   return (
     <Paper
@@ -37,7 +41,8 @@ const TodoApp = () => {
           <Typography color="inherit">Todo with Hookd</Typography>
         </Toolbar>
       </AppBar>
-      <TodoList task={task} />
+      <TodoForm handleTodoPass={handleTodoPass} />
+      <TodoList tasks={tasks} />
     </Paper>
   );
 };
