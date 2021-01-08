@@ -2,11 +2,14 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import TodoTask from './TodoTask';
 
-const TodoList = ({ tasks, handleTodoDelete, handleCompleted }) => {
+const TodoList = ({
+  tasks,
+  handleTodoDelete,
+  handleCompleted,
+  handleUpdate
+}) => {
   return (
     <Paper>
       <List>
@@ -19,6 +22,7 @@ const TodoList = ({ tasks, handleTodoDelete, handleCompleted }) => {
               taskChecked={m.completed}
               handleTodoDelete={handleTodoDelete}
               handleCompleted={handleCompleted}
+              handleUpdate={handleUpdate}
             />
             <Divider />
           </>

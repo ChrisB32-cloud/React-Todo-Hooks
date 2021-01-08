@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useToggle from '../hooks/useToggle';
+// import useToggle from '../hooks/useToggle';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -22,7 +22,6 @@ const TodoApp = () => {
   ];
 
   const [tasks, setTasks] = useState(initialTodos);
-  const [comp, setComp] = useToggle(false);
 
   const handleTodoPass = passTodo => {
     setTasks([...tasks, passTodo]);
@@ -37,6 +36,10 @@ const TodoApp = () => {
       t.id === taskId ? { ...t, completed: !t.completed } : t
     );
     setTasks(toggleCompleted);
+  };
+
+  const handleUpdate = passUpdate => {
+    setTasks([...tasks, passUpdate]);
   };
 
   return (
@@ -61,6 +64,7 @@ const TodoApp = () => {
             tasks={tasks}
             handleTodoDelete={handleTodoDelete}
             handleCompleted={handleCompleted}
+            handleUpdate={handleUpdate}
           />
         </Grid>
       </Grid>

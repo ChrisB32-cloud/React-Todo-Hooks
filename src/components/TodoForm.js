@@ -2,7 +2,6 @@ import React from 'react';
 import useInputState from '../hooks/useInputState';
 import Paper from '@material-ui/core/Paper';
 import { v4 as uuidv4 } from 'uuid';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
 const TodoForm = ({ handleTodoPass }) => {

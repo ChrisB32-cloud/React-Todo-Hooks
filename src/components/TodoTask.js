@@ -1,22 +1,32 @@
 import React from 'react';
+import useToggle from '../hooks/useToggle';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import EditIcon from '@material-ui/icons/Edit';
+import TodoEdit from './TodoEdit';
 
 const TodoTask = ({
   tasks,
   taskId,
   handleTodoDelete,
   taskChecked,
-  handleCompleted
+  handleCompleted,
+  handleUpdate
 }) => {
+  const [formSwitch, setFormSwitch] = useToggle(false);
   const handleDelete = () => {
     handleTodoDelete(taskId);
   };
   const handleCheckClick = () => {
     handleCompleted(taskId);
+  };
+  const editForm = () => {
+    setFormSwitch(true);
+  };
+  const closeUpdateForm = closeForm => {
+    setFormSwitch(closeForm);
   };
   return (
     <ListItem>
@@ -27,23 +37,35 @@ const TodoTask = ({
         aria-label="CheckBox"
         color="default"
       />
-      <ListItemText
-        style={{ textDecoration: taskChecked ? 'line-through' : 'none' }}
-      >
-        {tasks}
-      </ListItemText>
+      {formSwitch === false ? (
+        <>
+          <ListItemText
+            style={{ textDecoration: taskChecked ? 'line-through' : 'none' }}
+          >
+            {tasks}
+          </ListItemText>
+          <Button
+            onClick={handleDelete}
+            aria-label="Delete"
+            style={{ backgroundColor: '#807d75', marginRight: '0.5rem' }}
+          >
+            x
+          </Button>
+        </>
+      ) : (
+        <TodoEdit
+          taskPass={tasks}
+          id={taskId}
+          handleUpdate={handleUpdate}
+          closeUpdateForm={closeUpdateForm}
+        />
+      )}
       <Button
-        onClick={handleDelete}
-        aria-label="Delete"
-        style={{ backgroundColor: '#807d75', marginRight: '0.5rem' }}
-      >
-        x
-      </Button>
-      <Button
+        onClick={editForm}
         aria-label="Edit"
         style={{ backgroundColor: '#807d75', marginRight: '0.5rem' }}
       >
-        <EditIcon />
+        {formSwitch === false ? <EditIcon /> : 'x'}
       </Button>
     </ListItem>
   );
