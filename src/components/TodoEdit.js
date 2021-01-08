@@ -12,7 +12,7 @@ const TodoEdit = ({ taskPass, id, handleUpdate, closeUpdateForm }) => {
     closeUpdateForm(false);
     resetText();
   };
-  console.log(text);
+  //   console.log(text);
   return (
     <Paper>
       <form onSubmit={handleSubmit}>

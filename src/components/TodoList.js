@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import TodoTask from './TodoTask';
 
 const TodoList = ({
@@ -14,18 +14,18 @@ const TodoList = ({
     <Paper>
       <List>
         {tasks.map(m => (
-          <>
-            <TodoTask
-              key={m.id}
-              tasks={m.task}
-              taskId={m.id}
-              taskChecked={m.completed}
-              handleTodoDelete={handleTodoDelete}
-              handleCompleted={handleCompleted}
-              handleUpdate={handleUpdate}
-            />
-            <Divider />
-          </>
+          // <>
+          <TodoTask
+            key={m.id}
+            tasks={m.task}
+            taskId={m.id}
+            taskChecked={m.completed}
+            handleTodoDelete={handleTodoDelete}
+            handleCompleted={handleCompleted}
+            handleUpdate={handleUpdate}
+          />
+          // <Divider />
+          // </>
         ))}
       </List>
     </Paper>
