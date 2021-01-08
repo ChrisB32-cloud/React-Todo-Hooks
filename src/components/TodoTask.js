@@ -16,7 +16,7 @@ const TodoTask = ({
     handleTodoDelete(taskId);
   };
   const handleCheckClick = () => {
-    handleCompleted(taskId, taskChecked);
+    handleCompleted(taskId);
   };
   return (
     <ListItem>
@@ -27,7 +27,11 @@ const TodoTask = ({
         aria-label="CheckBox"
         color="default"
       />
-      <ListItemText>{tasks}</ListItemText>
+      <ListItemText
+        style={{ textDecoration: taskChecked ? 'line-through' : 'none' }}
+      >
+        {tasks}
+      </ListItemText>
       <Button
         onClick={handleDelete}
         aria-label="Delete"

@@ -32,8 +32,11 @@ const TodoApp = () => {
     setTasks(tasks.filter(t => t.id !== passedId));
   };
 
-  const handleCompleted = (taskId, compTask) => {
-    // console.log(taskId, compTask);
+  const handleCompleted = taskId => {
+    const toggleCompleted = tasks.map(t =>
+      t.id === taskId ? { ...t, completed: !t.completed } : t
+    );
+    setTasks(toggleCompleted);
   };
 
   return (
