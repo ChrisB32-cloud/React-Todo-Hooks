@@ -4,15 +4,15 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const TodoEdit = ({ taskPass, taskId, handleUpdate, closeUpdateForm }) => {
+const TodoEdit = ({ taskPass, id, handleUpdate, closeUpdateForm }) => {
   const [text, setText, resetText] = useInputState(taskPass);
   const handleSubmit = e => {
     e.preventDefault();
-    handleUpdate({ id: handleUpdate, task: text, completed: false });
+    handleUpdate({ id: id, task: text, completed: false });
     closeUpdateForm(false);
     resetText();
   };
-  //   console.log(task);
+  console.log(text);
   return (
     <Paper>
       <form onSubmit={handleSubmit}>

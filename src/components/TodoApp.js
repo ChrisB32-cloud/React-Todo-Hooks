@@ -39,7 +39,10 @@ const TodoApp = () => {
   };
 
   const handleUpdate = passUpdate => {
-    setTasks([...tasks, passUpdate]);
+    const updateTask = tasks.map(t =>
+      t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
+    );
+    setTasks(updateTask);
   };
 
   return (
