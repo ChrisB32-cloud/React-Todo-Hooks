@@ -24,6 +24,7 @@ const TodoApp = () => {
   const [tasks, setTasks] = useState(initialTodos);
 
   const handleTodoPass = passTodo => {
+    storData();
     setTasks([...tasks, passTodo]);
   };
 
@@ -43,6 +44,11 @@ const TodoApp = () => {
       t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
     );
     setTasks(updateTask);
+    storData();
+  };
+
+  const storData = () => {
+    localStorage.setItem('allTodos', JSON.stringify(tasks));
   };
 
   return (

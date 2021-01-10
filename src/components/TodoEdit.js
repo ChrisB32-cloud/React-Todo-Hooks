@@ -23,9 +23,9 @@ const TodoEdit = ({ taskPass, id, handleUpdate, closeUpdateForm }) => {
           label="AddTodo"
           fullWidth
         />
-        <Button style={{ backgroundColor: '#807d75' }} type="submit">
+        {/* <Button style={{ backgroundColor: '#807d75' }} type="submit">
           Update
-        </Button>
+        </Button> */}
         {/* <button type="submit">Update</button> */}
       </form>
     </Paper>
