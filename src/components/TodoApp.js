@@ -50,7 +50,7 @@ const TodoApp = () => {
   const storData = () => {
     localStorage.setItem('allTodos', JSON.stringify(tasks));
   };
-
+  storData();
   return (
     <Paper
       style={{
