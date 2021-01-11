@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 // import useToggle from '../hooks/useToggle';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
@@ -21,10 +21,17 @@ const TodoApp = () => {
     { id: 3, task: 'Wash Self', completed: false }
   ];
 
-  const [tasks, setTasks] = useState(initialTodos);
+  const fetchlocalstorage = localStorage.getItem('allTodos');
+  const parseTodos = JSON.parse(fetchlocalstorage);
+  const localOrInitail = parseTodos === null ? initialTodos : parseTodos;
+  const [tasks, setTasks] = useState(localOrInitail);
+  // const [tasks, setTasks] = useState(initialTodos);
+
+  useEffect(() => {
+    storData();
+  }, [tasks]);
 
   const handleTodoPass = passTodo => {
-    storData();
     setTasks([...tasks, passTodo]);
   };
 
@@ -50,7 +57,6 @@ const TodoApp = () => {
   const storData = () => {
     localStorage.setItem('allTodos', JSON.stringify(tasks));
   };
-  // storData();
   return (
     <Paper
       style={{
