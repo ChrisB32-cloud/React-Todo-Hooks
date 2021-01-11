@@ -18,7 +18,7 @@ const TodoForm = ({ handleTodoPass }) => {
           value={text}
           onChange={setText}
           margin="normal"
-          label="AddTodo"
+          label="Add Todo"
           fullWidth
         />
         {/* <button type="submit">Add Todo</button> */}
