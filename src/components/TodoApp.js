@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import useToggle from '../hooks/useToggle';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
