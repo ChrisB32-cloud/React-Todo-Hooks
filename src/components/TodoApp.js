@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import useToggle from '../hooks/useToggle';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
@@ -28,7 +28,8 @@ const TodoApp = () => {
   // const [tasks, setTasks] = useState(initialTodos);
 
   useEffect(() => {
-    storData();
+    // storData();
+    localStorage.setItem('allTodos', JSON.stringify(tasks));
   }, [tasks]);
 
   const handleTodoPass = passTodo => {
@@ -51,12 +52,11 @@ const TodoApp = () => {
       t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
     );
     setTasks(updateTask);
-    storData();
   };
 
-  const storData = () => {
-    localStorage.setItem('allTodos', JSON.stringify(tasks));
-  };
+  // const storData = () => {
+  //   localStorage.setItem('allTodos', JSON.stringify(tasks));
+  // };
   return (
     <Paper
       style={{
