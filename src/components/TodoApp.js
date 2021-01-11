@@ -13,6 +13,10 @@ import TodoList from './TodoList';
 //   - Todo List
 //      - Todo Item
 
+// !!!!!
+// - Leaving A few buttons commented out on Components incase of future changes
+// !!!!!
+
 const TodoApp = () => {
   const initialTodos = [
     { id: 1, task: 'Wash Jeep', completed: false },
@@ -68,7 +72,7 @@ const TodoApp = () => {
     >
       <AppBar color="primary" position="static" styles={{ height: '64px' }}>
         <Toolbar>
-          <Typography color="inherit">Todo with Hooks</Typography>
+          <Typography color="inherit"> React Todo with Hooks</Typography>
         </Toolbar>
       </AppBar>
       <Grid container justify="center" style={{ marginTop: '2rem' }}>
