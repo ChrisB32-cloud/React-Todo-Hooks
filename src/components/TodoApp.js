@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import useTodoState from '../hooks/useTodoState';
 import TodoForm from './TodoForm';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -27,39 +28,18 @@ const TodoApp = () => {
   const fetchlocalstorage = localStorage.getItem('allTodos');
   const parseTodos = JSON.parse(fetchlocalstorage);
   const localOrInitail = parseTodos === null ? initialTodos : parseTodos;
-  const [tasks, setTasks] = useState(localOrInitail);
-  // const [tasks, setTasks] = useState(initialTodos);
+  const {
+    tasks,
+    handleTodoPass,
+    handleTodoDelete,
+    handleCompleted,
+    handleUpdate
+  } = useTodoState(localOrInitail);
 
   useEffect(() => {
-    // storData();
     localStorage.setItem('allTodos', JSON.stringify(tasks));
   }, [tasks]);
 
-  const handleTodoPass = passTodo => {
-    setTasks([...tasks, passTodo]);
-  };
-
-  const handleTodoDelete = passedId => {
-    setTasks(tasks.filter(t => t.id !== passedId));
-  };
-
-  const handleCompleted = taskId => {
-    const toggleCompleted = tasks.map(t =>
-      t.id === taskId ? { ...t, completed: !t.completed } : t
-    );
-    setTasks(toggleCompleted);
-  };
-
-  const handleUpdate = passUpdate => {
-    const updateTask = tasks.map(t =>
-      t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
-    );
-    setTasks(updateTask);
-  };
-
-  // const storData = () => {
-  //   localStorage.setItem('allTodos', JSON.stringify(tasks));
-  // };
   return (
     <Paper
       style={{
@@ -91,3 +71,31 @@ const TodoApp = () => {
 };
 
 export default TodoApp;
+
+// const storData = () => {
+//   localStorage.setItem('allTodos', JSON.stringify(tasks));
+// };
+
+// storData();
+
+// const handleTodoPass = passTodo => {
+//   setTasks([...tasks, passTodo]);
+// };
+
+// const handleTodoDelete = passedId => {
+//   setTasks(tasks.filter(t => t.id !== passedId));
+// };
+
+// const handleCompleted = taskId => {
+//   const toggleCompleted = tasks.map(t =>
+//     t.id === taskId ? { ...t, completed: !t.completed } : t
+//   );
+//   setTasks(toggleCompleted);
+// };
+
+// const handleUpdate = passUpdate => {
+//   const updateTask = tasks.map(t =>
+//     t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
+//   );
+//   setTasks(updateTask);
+// };
