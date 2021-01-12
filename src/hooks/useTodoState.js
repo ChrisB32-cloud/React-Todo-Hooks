@@ -1,5 +1,6 @@
 import { useState } from 'react';
-export default localOrInitail => {
+
+function useTodoState(localOrInitail) {
   const [tasks, setTasks] = useState(localOrInitail);
 
   return {
@@ -23,7 +24,8 @@ export default localOrInitail => {
       setTasks(updateTask);
     }
   };
-};
+}
+export default useTodoState;
 
 // const handleTodoPass = passTodo => {
 //     setTasks([...tasks, passTodo]);
