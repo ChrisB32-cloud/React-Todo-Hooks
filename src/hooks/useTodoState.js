@@ -19,7 +19,9 @@ function useTodoState(localOrInitail) {
     },
     handleUpdate: passUpdate => {
       const updateTask = tasks.map(t =>
-        t.id === passUpdate.id ? { ...t, task: passUpdate.task } : t
+        t.id === passUpdate.id
+          ? { ...t, task: passUpdate.task, completed: passUpdate.completed }
+          : t
       );
       setTasks(updateTask);
     }

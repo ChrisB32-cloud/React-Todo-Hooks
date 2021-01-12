@@ -12,7 +12,6 @@ const TodoEdit = ({ taskPass, id, handleUpdate, closeUpdateForm }) => {
     closeUpdateForm(false);
     resetText();
   };
-  //   console.log(text);
   return (
     <Paper>
       <form onSubmit={handleSubmit}>
@@ -23,13 +22,15 @@ const TodoEdit = ({ taskPass, id, handleUpdate, closeUpdateForm }) => {
           label="AddTodo"
           fullWidth
         />
-        {/* <Button style={{ backgroundColor: '#807d75' }} type="submit">
-          Update
-        </Button> */}
-        {/* <button type="submit">Update</button> */}
       </form>
     </Paper>
   );
 };
 
 export default TodoEdit;
+
+//  <Button style={{ backgroundColor: '#807d75' }} type="submit">
+//         Update
+//       </Button>
+
+//  <button type="submit">Update</button>
