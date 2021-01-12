@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 function useTodoState(localOrInitail) {
-  const [tasks, setTasks] = useState(localOrInitail);
+  const [tasks, setTasks] = useLocalStorage('allTasks', localOrInitail);
+  //   const [tasks, setTasks] = useState(localOrInitail);
 
   return {
     tasks,

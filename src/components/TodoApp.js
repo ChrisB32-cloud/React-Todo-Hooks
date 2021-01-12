@@ -20,21 +20,21 @@ import TodoList from './TodoList';
 
 const TodoApp = () => {
   const initialTodos = [
-    { id: 1, task: 'Wash Jeep', completed: false },
-    { id: 2, task: 'Buy Grouserys', completed: true },
-    { id: 3, task: 'Wash Self', completed: false }
+    { id: 1, task: 'Wash Jeep', completed: false }
+    // { id: 2, task: 'Buy Grouserys', completed: true },
+    // { id: 3, task: 'Wash Self', completed: false }
   ];
 
-  const fetchlocalstorage = localStorage.getItem('allTodos');
-  const parseTodos = JSON.parse(fetchlocalstorage);
-  const localOrInitail = parseTodos === null ? initialTodos : parseTodos;
+  // const fetchlocalstorage = localStorage.getItem('allTodos');
+  // const parseTodos = JSON.parse(fetchlocalstorage);
+  // const localOrInitail = parseTodos === null ? initialTodos : parseTodos;
   const {
     tasks,
     handleTodoPass,
     handleTodoDelete,
     handleCompleted,
     handleUpdate
-  } = useTodoState(localOrInitail);
+  } = useTodoState(initialTodos);
 
   useEffect(() => {
     localStorage.setItem('allTodos', JSON.stringify(tasks));
